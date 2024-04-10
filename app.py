@@ -23,8 +23,7 @@ if build_histogram:
     st.plotly_chart(fig, use_container_width=True)
 
 # Se construye un grafico de dispersión de la variacion de los precios de automoviles en función del kilometraje
-
-# se creauna casilla de verificación
+# se crea una casilla de verificación
 build_scatter = st.checkbox('Construir un grafico de dispersión')
 # if scat_button:  # al hacer clic en el botón
 if build_scatter:
@@ -33,16 +32,11 @@ if build_scatter:
         'Creación de un grafico de dispesión para el conjunto de datos de anuncios de venta de coches, precio vs kilometraje')
 
     # crear un histograma
-    fig = px.scatter(car_data, x="odometer", y="price", color='petal_length')
+    fig = px.scatter(car_data, x="odometer", y="price")
 
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
-# build_histogram = st.checkbox('Construir un histograma')
-
-# if build_histogram: # si la casilla de verificación está seleccionada
-#    st.write('Construir un histograma para la columna odómetro')
-    ...
 # vamos a hacer un grafico dinamico con los modelos 3 modelos mas repetidos en la DB
 # Agregar un subtitulo o texto informativo
 st.subheader('Variación de precio con respecto al kilometraje')
@@ -55,14 +49,14 @@ selected_model = st.radio('Selecciona un modelo:',  [
 filtered_df = car_data[car_data['model'] == selected_model]
 
 # Verificar el modelo seleccionado y generar el gráfico correspondiente
-if selected_model == 'ford f-150':
+if selected_model == 'ford f-150':  # codigo para el modelo ford f-150
     fig, ax = plt.subplots()
     ax.scatter(filtered_df['odometer'], filtered_df['price'], color='red')
     ax.set_xlabel('Kilometraje')
     ax.set_ylabel('Precio USD')
     ax.set_title(f'Variación de precio vs. kilometraje para {selected_model}')
     st.pyplot(fig)
-elif selected_model == 'chevrolet silverado 1500':
+elif selected_model == 'chevrolet silverado 1500':  # codigo para el modelo chevrolet silverado
     fig, ax = plt.subplots()
     ax.scatter(filtered_df['odometer'], filtered_df['price'], color='grey')
     ax.set_xlabel('Kilometraje')
