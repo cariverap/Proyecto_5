@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -42,3 +43,39 @@ if build_scatter:
 # if build_histogram: # si la casilla de verificación está seleccionada
 #    st.write('Construir un histograma para la columna odómetro')
     ...
+# vamos a hacer un grafico dinamico con los modelos 3 modelos mas repetidos en la DB
+# Agregar un subtitulo o texto informativo
+st.subheader('Variación de precio con respecto al kilometraje')
+
+# Agregar un botón para elegir el modelo
+selected_model = st.radio('Selecciona un modelo:',  [
+                          'ford f-150', 'chevrolet silverado 1500', 'ram 1500'])
+
+# Filtrar los datos según el modelo seleccionado
+filtered_df = car_data[car_data['model'] == selected_model]
+
+# Verificar el modelo seleccionado y generar el gráfico correspondiente
+if selected_model == 'ford f-150':
+    fig, ax = plt.subplots()
+    ax.scatter(filtered_df['odometer'], filtered_df['price'], color='red')
+    ax.set_xlabel('Kilometraje')
+    ax.set_ylabel('Precio USD')
+    ax.set_title(f'Variación de precio vs. kilometraje para {selected_model}')
+    st.pyplot(fig)
+elif selected_model == 'chevrolet silverado 1500':
+    fig, ax = plt.subplots()
+    ax.scatter(filtered_df['odometer'], filtered_df['price'], color='grey')
+    ax.set_xlabel('Kilometraje')
+    ax.set_ylabel('Precio USD')
+    ax.set_title(f'Variación de precio vs. kilometraje para {selected_model}')
+    st.pyplot(fig)
+    pass
+elif selected_model == 'ram 1500':  # Código para el gráfico de Ram 1500
+
+    fig, ax = plt.subplots()
+    ax.scatter(filtered_df['odometer'], filtered_df['price'], color='black')
+    ax.set_xlabel('Kilometraje')
+    ax.set_ylabel('Precio USD')
+    ax.set_title(f'Variación de precio vs. kilometraje para {selected_model}')
+    st.pyplot(fig)
+    pass
