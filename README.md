@@ -1,5 +1,5 @@
 # Proyecto_5
-Proyecto n° 5/BootCamp Tripleten Latam
+Proyecto n° 5/BootCamp Tripleten Latam: Desarrollar una app
 
 Creación de una app
 La siguiente aplicación construye:
